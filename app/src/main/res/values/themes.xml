@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.CulinaryKinetic" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">#FDF8F3</item>
+        <item name="android:windowBackground">#FDF8F3</item>
+    </style>
+</resources>
