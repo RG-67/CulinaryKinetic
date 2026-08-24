@@ -32,13 +32,24 @@ val bottomNavItems = listOf(
     BottomNavItem(Routes.HOME, "Home", Icons.Filled.Home, Icons.Outlined.Home),
     BottomNavItem(Routes.SEARCH, "Search", Icons.Filled.Search, Icons.Outlined.Search),
     BottomNavItem(Routes.ORDERS, "Orders", Icons.Filled.Receipt, Icons.Outlined.Receipt),
-    BottomNavItem(Routes.FAVORITES, "Favorites", Icons.Filled.Favorite, Icons.Outlined.FavoriteBorder),
+    BottomNavItem(
+        Routes.FAVORITES,
+        "Favorites",
+        Icons.Filled.Favorite,
+        Icons.Outlined.FavoriteBorder
+    ),
     BottomNavItem(Routes.PROFILE, "Profile", Icons.Filled.Person, Icons.Outlined.Person)
 )
 
 @Composable
 fun AppBottomNavBar(currentRoute: String?, onNavigate: (String) -> Unit) {
-    Surface(color = InkBlack, shadowElevation = 12.dp) {
+    Surface(
+        color = InkBlack,
+        shadowElevation = 12.dp,
+        modifier = Modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+    ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
