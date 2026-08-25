@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 import com.culinarykinetic.app.ui.components.PrimaryButton
@@ -120,6 +121,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                     }
                     Spacer(Modifier.height(24.dp))
                     PrimaryButton(
+                        modifier = Modifier.navigationBarsPadding(),
                         text = if (page == pages.size - 1) "Get Started" else "Continue",
                         trailingIcon = androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowForward,
                         onClick = {
