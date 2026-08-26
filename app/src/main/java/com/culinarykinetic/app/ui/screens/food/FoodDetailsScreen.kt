@@ -47,19 +47,29 @@ fun FoodDetailsScreen(
     val unitPrice = food.price + selectedSize.extraPrice + selectedAddOns.sumOf { it.price }
     val totalPrice = unitPrice * quantity
 
-    Box(Modifier.fillMaxSize().background(Color.Black.copy(alpha = 0.35f))) {
+    Box(Modifier
+        .fillMaxSize()
+        .background(Color.Black.copy(alpha = 0.35f))) {
         Column(
             Modifier
                 .align(Alignment.BottomCenter)
                 .fillMaxWidth()
-                .fillMaxHeight(0.92f)
-                .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+                .fillMaxHeight()
                 .background(BrandCream)
         ) {
             Box(Modifier.weight(1f)) {
-                Column(Modifier.verticalScroll(rememberScrollState())) {
+                Column(
+                    Modifier
+                        .verticalScroll(rememberScrollState())
+                        .clip(RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+                ) {
                     Box {
-                        NetworkImage(food.imageUrl, modifier = Modifier.fillMaxWidth().height(220.dp))
+                        NetworkImage(
+                            food.imageUrl,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(220.dp)
+                        )
                         IconButton(
                             onClick = onClose,
                             modifier = Modifier
@@ -72,9 +82,21 @@ fun FoodDetailsScreen(
                         }
                     }
                     Column(Modifier.padding(20.dp)) {
-                        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                            Text(food.name, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.weight(1f))
-                            Text("\u20B9${food.price}", style = MaterialTheme.typography.headlineSmall, color = BrandOrange, fontWeight = FontWeight.Bold)
+                        Row(
+                            Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Text(
+                                food.name,
+                                style = MaterialTheme.typography.headlineSmall,
+                                modifier = Modifier.weight(1f)
+                            )
+                            Text(
+                                "\u20B9${food.price}",
+                                style = MaterialTheme.typography.headlineSmall,
+                                color = BrandOrange,
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                         Spacer(Modifier.height(6.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -85,24 +107,50 @@ fun FoodDetailsScreen(
                                     .padding(horizontal = 6.dp, vertical = 2.dp)
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Icon(Icons.Filled.Star, contentDescription = null, tint = Color.White, modifier = Modifier.size(10.dp))
-                                    Text(" ${food.rating}", color = Color.White, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                                    Icon(
+                                        Icons.Filled.Star,
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(10.dp)
+                                    )
+                                    Text(
+                                        " ${food.rating}",
+                                        color = Color.White,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 }
                             }
-                            Text("  (${food.reviewCount} reviews)", style = MaterialTheme.typography.bodySmall, color = SubtleGray)
+                            Text(
+                                "  (${food.reviewCount} reviews)",
+                                style = MaterialTheme.typography.bodySmall,
+                                color = SubtleGray
+                            )
                         }
                         Spacer(Modifier.height(12.dp))
-                        Text(food.description, style = MaterialTheme.typography.bodyMedium, color = CharcoalText)
+                        Text(
+                            food.description,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = CharcoalText
+                        )
                         Spacer(Modifier.height(20.dp))
                         Divider(color = DividerGray)
                         Spacer(Modifier.height(16.dp))
 
                         if (food.sizes.size > 1) {
-                            Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
+                            Row(
+                                Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
                                 Text("Choose Size", style = MaterialTheme.typography.titleMedium)
                                 Text(
-                                    "REQUIRED", style = MaterialTheme.typography.labelSmall, color = SubtleGray,
-                                    modifier = Modifier.clip(RoundedCornerShape(4.dp)).background(ChipGray).padding(horizontal = 8.dp, vertical = 3.dp)
+                                    "REQUIRED",
+                                    style = MaterialTheme.typography.labelSmall,
+                                    color = SubtleGray,
+                                    modifier = Modifier
+                                        .clip(RoundedCornerShape(4.dp))
+                                        .background(ChipGray)
+                                        .padding(horizontal = 8.dp, vertical = 3.dp)
                                 )
                             }
                             Spacer(Modifier.height(10.dp))
@@ -119,7 +167,9 @@ fun FoodDetailsScreen(
                             food.addOns.forEach { addOn ->
                                 val checked = selectedAddOns.contains(addOn)
                                 AddOnRow(addOn, checked) {
-                                    if (checked) selectedAddOns.remove(addOn) else selectedAddOns.add(addOn)
+                                    if (checked) selectedAddOns.remove(addOn) else selectedAddOns.add(
+                                        addOn
+                                    )
                                 }
                                 Spacer(Modifier.height(8.dp))
                             }
@@ -132,7 +182,8 @@ fun FoodDetailsScreen(
                 Modifier
                     .fillMaxWidth()
                     .background(BrandCream)
-                    .padding(horizontal = 20.dp, vertical = 16.dp),
+                    .padding(horizontal = 20.dp, vertical = 16.dp)
+                    .navigationBarsPadding(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
@@ -145,7 +196,13 @@ fun FoodDetailsScreen(
                     text = "Add to Cart \u2022 \u20B9$totalPrice",
                     modifier = Modifier.weight(1f),
                     onClick = {
-                        viewModel.addToCart(restaurant, food, selectedSize, selectedAddOns.toList(), quantity)
+                        viewModel.addToCart(
+                            restaurant,
+                            food,
+                            selectedSize,
+                            selectedAddOns.toList(),
+                            quantity
+                        )
                         onGoToCart()
                     }
                 )
@@ -170,14 +227,22 @@ private fun SizeOptionRow(size: SizeOption, selected: Boolean, onClick: () -> Un
             .padding(14.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        RadioButton(selected = selected, onClick = onClick, colors = RadioButtonDefaults.colors(selectedColor = BrandOrange))
+        RadioButton(
+            selected = selected,
+            onClick = onClick,
+            colors = RadioButtonDefaults.colors(selectedColor = BrandOrange)
+        )
         Spacer(Modifier.width(4.dp))
         Column(Modifier.weight(1f)) {
             Text(size.label, style = MaterialTheme.typography.titleSmall)
         }
         Text(size.note, style = MaterialTheme.typography.bodySmall, color = SubtleGray)
         if (size.extraPrice > 0) {
-            Text("  + \u20B9${size.extraPrice}", style = MaterialTheme.typography.labelLarge, color = BrandOrange)
+            Text(
+                "  + \u20B9${size.extraPrice}",
+                style = MaterialTheme.typography.labelLarge,
+                color = BrandOrange
+            )
         }
     }
 }
@@ -193,9 +258,17 @@ private fun AddOnRow(addOn: AddOn, checked: Boolean, onToggle: () -> Unit) {
             .padding(horizontal = 14.dp, vertical = 6.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Checkbox(checked = checked, onCheckedChange = { onToggle() }, colors = CheckboxDefaults.colors(checkedColor = BrandOrange))
+        Checkbox(
+            checked = checked,
+            onCheckedChange = { onToggle() },
+            colors = CheckboxDefaults.colors(checkedColor = BrandOrange)
+        )
         Text(addOn.name, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
-        Text("+ \u20B9${addOn.price}", style = MaterialTheme.typography.labelLarge, color = BrandOrange)
+        Text(
+            "+ \u20B9${addOn.price}",
+            style = MaterialTheme.typography.labelLarge,
+            color = BrandOrange
+        )
     }
 }
 

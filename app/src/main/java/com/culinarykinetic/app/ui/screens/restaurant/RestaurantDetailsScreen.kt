@@ -153,6 +153,7 @@ fun RestaurantDetailsScreen(
                     .align(Alignment.BottomCenter)
                     .padding(16.dp)
                     .fillMaxWidth()
+                    .navigationBarsPadding()
                     .clip(RoundedCornerShape(100.dp))
                     .background(BrandOrange)
                     .clickable { onCartClick() }
