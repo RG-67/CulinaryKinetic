@@ -40,15 +40,29 @@ fun RestaurantDetailsScreen(
     onCartClick: () -> Unit
 ) {
     val restaurant = viewModel.restaurants.find { it.id == restaurantId } ?: return
-    var selectedCategory by remember { mutableStateOf(restaurant.menuCategories.firstOrNull() ?: "Recommended") }
+    var selectedCategory by remember {
+        mutableStateOf(
+            restaurant.menuCategories.firstOrNull() ?: "Recommended"
+        )
+    }
     val isFavorite = viewModel.favoriteRestaurantIds.contains(restaurant.id)
 
     Box(Modifier.fillMaxSize()) {
         LazyColumn(Modifier.fillMaxSize()) {
             item {
                 Box {
-                    NetworkImage(restaurant.coverImageUrl, modifier = Modifier.fillMaxWidth().height(220.dp))
-                    Box(Modifier.fillMaxWidth().height(220.dp).background(Color.Black.copy(alpha = 0.15f)))
+                    NetworkImage(
+                        restaurant.coverImageUrl,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(220.dp)
+                    )
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .height(220.dp)
+                            .background(Color.Black.copy(alpha = 0.15f))
+                    )
                     IconButton(
                         onClick = onBack,
                         modifier = Modifier
@@ -56,12 +70,18 @@ fun RestaurantDetailsScreen(
                             .clip(CircleShape)
                             .background(Color.White.copy(alpha = 0.9f))
                     ) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back", tint = InkBlack)
+                        Icon(
+                            Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                            tint = InkBlack
+                        )
                     }
                     FavoriteToggleButton(
                         isFavorite = isFavorite,
                         onToggle = { viewModel.toggleFavoriteRestaurant(restaurant.id) },
-                        modifier = Modifier.align(Alignment.TopEnd).padding(12.dp),
+                        modifier = Modifier
+                            .align(Alignment.TopEnd)
+                            .padding(12.dp),
                         background = Color.White
                     )
                 }
@@ -85,8 +105,18 @@ fun RestaurantDetailsScreen(
                                 .padding(horizontal = 6.dp, vertical = 2.dp)
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Icon(Icons.Filled.Favorite, contentDescription = null, tint = Color.White, modifier = Modifier.size(10.dp))
-                                Text(" ${restaurant.rating}", color = Color.White, style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold)
+                                Icon(
+                                    Icons.Filled.Favorite,
+                                    contentDescription = null,
+                                    tint = Color.White,
+                                    modifier = Modifier.size(10.dp)
+                                )
+                                Text(
+                                    " ${restaurant.rating}",
+                                    color = Color.White,
+                                    style = MaterialTheme.typography.labelSmall,
+                                    fontWeight = FontWeight.Bold
+                                )
                             }
                         }
                         Text(
@@ -112,7 +142,10 @@ fun RestaurantDetailsScreen(
                             OfferPill(icon = Icons.Filled.LocalOffer, text = restaurant.offerText)
                         }
                         if (restaurant.freeDelivery) {
-                            OfferPill(icon = Icons.Filled.DeliveryDining, text = "Free Delivery on all orders")
+                            OfferPill(
+                                icon = Icons.Filled.DeliveryDining,
+                                text = "Free Delivery on all orders"
+                            )
                         }
                     }
                     Spacer(Modifier.height(18.dp))
@@ -143,7 +176,7 @@ fun RestaurantDetailsScreen(
                     }
                 )
             }
-            item { Spacer(Modifier.height(100.dp)) }
+            item { Spacer(Modifier.height(120.dp)) }
         }
 
         if (viewModel.cartItems.isNotEmpty() && viewModel.cartRestaurant?.id == restaurant.id) {
@@ -151,7 +184,7 @@ fun RestaurantDetailsScreen(
             Row(
                 Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(16.dp)
+                    .padding(all = 16.dp)
                     .fillMaxWidth()
                     .navigationBarsPadding()
                     .clip(RoundedCornerShape(100.dp))
@@ -161,7 +194,11 @@ fun RestaurantDetailsScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("$itemCount item${if (itemCount > 1) "s" else ""} \u2022 \u20B9${viewModel.cartItemTotal}", color = Color.White, fontWeight = FontWeight.Bold)
+                Text(
+                    "$itemCount item${if (itemCount > 1) "s" else ""} \u2022 \u20B9${viewModel.cartItemTotal}",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
                 Text("View Cart \u2192", color = Color.White, fontWeight = FontWeight.Bold)
             }
         }
@@ -177,9 +214,20 @@ private fun OfferPill(icon: ImageVector, text: String) {
             .padding(horizontal = 10.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(icon, contentDescription = null, tint = BrandOrangeDark, modifier = Modifier.size(16.dp))
+        Icon(
+            icon,
+            contentDescription = null,
+            tint = BrandOrangeDark,
+            modifier = Modifier.size(16.dp)
+        )
         Spacer(Modifier.width(6.dp))
-        Text(text, style = MaterialTheme.typography.labelMedium, color = BrandOrangeDark, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        Text(
+            text,
+            style = MaterialTheme.typography.labelMedium,
+            color = BrandOrangeDark,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
     }
 }
 
@@ -206,7 +254,12 @@ private fun MenuItemRow(
                 .size(6.dp)
         )
         Box(Modifier.size(76.dp)) {
-            NetworkImage(item.imageUrl, modifier = Modifier.fillMaxSize().clip(RoundedCornerShape(12.dp)))
+            NetworkImage(
+                item.imageUrl,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(12.dp))
+            )
             Box(
                 Modifier
                     .align(Alignment.TopStart)
@@ -220,7 +273,12 @@ private fun MenuItemRow(
         }
         Spacer(Modifier.width(12.dp))
         Column(Modifier.weight(1f)) {
-            Text(item.name, style = MaterialTheme.typography.titleSmall, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(
+                item.name,
+                style = MaterialTheme.typography.titleSmall,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
             Spacer(Modifier.height(2.dp))
             Text(
                 item.description,
@@ -230,7 +288,12 @@ private fun MenuItemRow(
                 overflow = TextOverflow.Ellipsis
             )
             Spacer(Modifier.height(6.dp))
-            Text("\u20B9${item.price}", style = MaterialTheme.typography.titleSmall, color = BrandOrange, fontWeight = FontWeight.Bold)
+            Text(
+                "\u20B9${item.price}",
+                style = MaterialTheme.typography.titleSmall,
+                color = BrandOrange,
+                fontWeight = FontWeight.Bold
+            )
         }
         Spacer(Modifier.width(8.dp))
         IconButton(

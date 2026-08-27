@@ -77,7 +77,7 @@ fun AddressSelectScreen(
             }
             item { Spacer(Modifier.height(90.dp)) }
         }
-        Surface(shadowElevation = 12.dp, color = BrandCream) {
+        Surface(shadowElevation = 12.dp, color = BrandCream, modifier = Modifier.navigationBarsPadding()) {
             Column(Modifier.padding(Dimens.ScreenPadding)) {
                 PrimaryButton(
                     text = "Confirm Address",

@@ -1,6 +1,8 @@
 package com.culinarykinetic.app.ui.screens.profile
 
+import android.R
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.culinarykinetic.app.state.AppViewModel
@@ -38,15 +41,19 @@ fun ProfileScreen(
     onLogOut: () -> Unit
 ) {
     val user = viewModel.currentUser
-    LazyColumn(Modifier
-        .fillMaxSize()
-        .padding(horizontal = Dimens.ScreenPadding)) {
+    LazyColumn(
+        Modifier
+            .fillMaxSize()
+            .padding(horizontal = Dimens.ScreenPadding)
+    ) {
         item { Spacer(Modifier.height(20.dp)) }
         item {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                NetworkImage(user.avatarUrl, modifier = Modifier
-                    .size(64.dp)
-                    .clip(CircleShape))
+                NetworkImage(
+                    user.avatarUrl, modifier = Modifier
+                        .size(64.dp)
+                        .clip(CircleShape)
+                )
                 Spacer(Modifier.width(14.dp))
                 Column(Modifier.weight(1f)) {
                     Text(user.name, style = MaterialTheme.typography.headlineSmall)
@@ -80,6 +87,7 @@ fun ProfileScreen(
                     .clickable { }
                     .padding(18.dp)
             ) {
+                Spacer(Modifier.padding(top = 10.dp))
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                     Column {
                         Text(
@@ -124,6 +132,7 @@ fun ProfileScreen(
                     color = Color.White.copy(alpha = 0.9f),
                     style = MaterialTheme.typography.labelSmall
                 )
+                Spacer(Modifier.padding(bottom = 10.dp))
             }
         }
         item { Spacer(Modifier.height(18.dp)) }
@@ -177,7 +186,7 @@ fun ProfileScreen(
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
             )
         }
-        item { Spacer(Modifier.height(90.dp)) }
+        item { Spacer(Modifier.height(50.dp)) }
     }
 }
 
@@ -192,6 +201,7 @@ private fun ProfileRow(
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(CardWhite)
+            .border(width = 1.dp, color = ChipGray, shape = RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -222,6 +232,7 @@ private fun ProfileGridItem(
             .fillMaxWidth()
             .fillMaxHeight()
             .clip(RoundedCornerShape(16.dp))
+            .border(width = 1.dp, color = ChipGray, shape = RoundedCornerShape(16.dp))
             .background(CardWhite)
             .clickable { onClick() }
             .padding(16.dp),

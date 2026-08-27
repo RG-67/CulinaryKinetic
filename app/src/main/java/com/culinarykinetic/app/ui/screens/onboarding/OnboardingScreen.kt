@@ -2,6 +2,7 @@ package com.culinarykinetic.app.ui.screens.onboarding
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
@@ -81,6 +82,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                                 .clip(RoundedCornerShape(100.dp))
                                 .background(InkBlack.copy(alpha = 0.35f))
                                 .padding(horizontal = 14.dp, vertical = 8.dp)
+                                .clickable(true, null, null, onClick = onFinished)
                                 .then(Modifier)
                         )
                     }

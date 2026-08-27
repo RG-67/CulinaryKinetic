@@ -44,14 +44,14 @@ object MockData {
         MenuItem(
             id = "m3", name = "Paneer Tikka Biryani",
             description = "Smoked paneer tikka chunks layered with aromatic rice and mild gravy.",
-            price = 280, imageUrl = "https://images.unsplash.com/photo-1701579231349-575d8f4cfa6c?w=600&q=80",
+            price = 280, imageUrl = "https://orders.popskitchen.in/storage/2024/09/image-285.png",
             category = "Recommended", isVeg = true, rating = 4.4, reviewCount = 61,
             addOns = listOf(AddOn("a2", "Raita", 40), AddOn("a3", "Soft Drink", 60))
         ),
         MenuItem(
             id = "m4", name = "Chicken 65 Starter",
             description = "Spicy, deep-fried chicken bites tossed in curry leaves and red chillies.",
-            price = 220, imageUrl = "https://images.unsplash.com/photo-1626082927389-6cd097cee6a6?w=600&q=80",
+            price = 220, imageUrl = "https://mykitchendiaries.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2026/01/Chicken-65-Feature-Image.jpg.webp",
             category = "Starters", isVeg = false, rating = 4.5, reviewCount = 44
         ),
         MenuItem(
@@ -131,7 +131,7 @@ object MockData {
         ),
         Restaurant(
             id = "r5", name = "Kolkata Special",
-            coverImageUrl = "https://images.unsplash.com/photo-1626777553635-be9d5c6c4a1a?w=900&q=80",
+            coverImageUrl = "https://images.unsplash.com/photo-1588644525273-f37b60d78512?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             cuisines = listOf("Bengali", "Mughlai", "Rolls"),
             rating = 4.2, reviewCount = 210, deliveryTimeMinutes = "15-25 min",
             distanceKm = 1.2, priceForTwo = 300, priceLevel = "$$",

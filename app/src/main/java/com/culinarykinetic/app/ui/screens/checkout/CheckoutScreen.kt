@@ -142,7 +142,7 @@ fun CheckoutScreen(
             }
             item { Spacer(Modifier.height(100.dp)) }
         }
-        Surface(shadowElevation = 12.dp, color = BrandCream) {
+        Surface(shadowElevation = 12.dp, color = BrandCream, modifier = Modifier.navigationBarsPadding()) {
             Column(Modifier.padding(Dimens.ScreenPadding)) {
                 PrimaryButton(
                     text = "Place Order \u2022 \u20B9${viewModel.cartGrandTotal}",

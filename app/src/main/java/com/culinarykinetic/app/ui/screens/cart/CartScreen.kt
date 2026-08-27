@@ -163,7 +163,7 @@ fun CartScreen(
             item { Spacer(Modifier.height(110.dp)) }
         }
 
-        Surface(shadowElevation = 12.dp, color = BrandCream) {
+        Surface(shadowElevation = 12.dp, color = BrandCream, modifier = Modifier.navigationBarsPadding()) {
             Row(
                 Modifier
                     .fillMaxWidth()
