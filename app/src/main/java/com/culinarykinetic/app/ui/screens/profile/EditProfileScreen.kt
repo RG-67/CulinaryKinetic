@@ -53,7 +53,7 @@ fun EditProfileScreen(viewModel: AppViewModel, onBack: () -> Unit, onSaved: () -
             )
         }
         Surface(shadowElevation = 12.dp) {
-            Column(Modifier.padding(Dimens.ScreenPadding)) {
+            Column(Modifier.padding(Dimens.ScreenPadding).navigationBarsPadding()) {
                 PrimaryButton(text = "Save Changes", onClick = onSaved)
             }
         }

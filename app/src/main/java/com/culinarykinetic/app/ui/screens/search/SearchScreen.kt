@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -47,12 +48,17 @@ fun SearchScreen(
 
     Column(Modifier.fillMaxSize()) {
         Row(
-            Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 8.dp),
+            Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (onBack != null) {
                 IconButton(onClick = onBack) {
-                    Icon(androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    Icon(
+                        androidx.compose.material.icons.Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back"
+                    )
                 }
             }
             OutlinedTextField(
@@ -62,7 +68,13 @@ fun SearchScreen(
                     .fillMaxWidth()
                     .focusRequester(focusRequester),
                 placeholder = { Text("Search for dishes, restaurants or cuisines") },
-                leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null, tint = BrandOrange) },
+                leadingIcon = {
+                    Icon(
+                        Icons.Filled.Search,
+                        contentDescription = null,
+                        tint = BrandOrange
+                    )
+                },
                 trailingIcon = {
                     if (query.isNotEmpty()) {
                         IconButton(onClick = { query = "" }) {
@@ -85,13 +97,19 @@ fun SearchScreen(
         }
 
         if (query.isBlank()) {
-            LazyColumn(Modifier.fillMaxSize().padding(horizontal = Dimens.ScreenPadding)) {
+            LazyColumn(
+                Modifier
+                    .fillMaxSize()
+                    .padding(horizontal = Dimens.ScreenPadding)
+            ) {
                 item {
                     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
                         Text("Recent Searches", style = MaterialTheme.typography.titleLarge)
                         if (viewModel.recentSearches.isNotEmpty()) {
                             Text(
-                                "Clear", color = BrandOrange, style = MaterialTheme.typography.labelLarge,
+                                "Clear",
+                                color = BrandOrange,
+                                style = MaterialTheme.typography.labelLarge,
                                 modifier = Modifier.clickable { viewModel.clearRecentSearches() }
                             )
                         }
@@ -109,7 +127,12 @@ fun SearchScreen(
                                     .padding(horizontal = 12.dp, vertical = 8.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Icon(Icons.Filled.History, contentDescription = null, modifier = Modifier.size(14.dp), tint = SubtleGray)
+                                Icon(
+                                    Icons.Filled.History,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(14.dp),
+                                    tint = SubtleGray
+                                )
                                 Spacer(Modifier.width(4.dp))
                                 Text(term, style = MaterialTheme.typography.labelMedium)
                             }
@@ -124,10 +147,21 @@ fun SearchScreen(
                 item {
                     LazyRow(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
                         items(MockData.popularCuisines) { cuisine ->
-                            Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.clickable { query = cuisine }) {
-                                Box(Modifier.size(64.dp).clip(CircleShape).background(ChipGray))
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.clickable { query = cuisine.name }) {
+                                Box(
+                                    Modifier
+                                        .size(64.dp)
+                                        .clip(CircleShape)
+                                        .background(ChipGray)
+                                ) {
+                                    NetworkImage(
+                                        cuisine.imageUrl, modifier = Modifier.clip(CircleShape)
+                                    )
+                                }
                                 Spacer(Modifier.height(6.dp))
-                                Text(cuisine, style = MaterialTheme.typography.labelMedium)
+                                Text(cuisine.name, style = MaterialTheme.typography.labelMedium)
                             }
                         }
                     }
@@ -135,7 +169,12 @@ fun SearchScreen(
                 }
                 item {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(Icons.Filled.LocalFireDepartment, contentDescription = null, tint = BrandOrange, modifier = Modifier.size(18.dp))
+                        Icon(
+                            Icons.Filled.LocalFireDepartment,
+                            contentDescription = null,
+                            tint = BrandOrange,
+                            modifier = Modifier.size(18.dp)
+                        )
                         Spacer(Modifier.width(4.dp))
                         Text("Trending Near You", style = MaterialTheme.typography.titleLarge)
                     }
@@ -161,7 +200,11 @@ fun SearchScreen(
                     message = "We couldn't find anything matching \"$query\". Try a different search term."
                 )
             } else {
-                LazyColumn(Modifier.fillMaxSize().padding(horizontal = Dimens.ScreenPadding)) {
+                LazyColumn(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(horizontal = Dimens.ScreenPadding)
+                ) {
                     if (matchedRestaurants.isNotEmpty()) {
                         item {
                             Text("Restaurants", style = MaterialTheme.typography.titleLarge)
@@ -176,7 +219,11 @@ fun SearchScreen(
                                         viewModel.commitSearch(query)
                                         onRestaurantClick(restaurant.id)
                                     },
-                                    onFavoriteToggle = { viewModel.toggleFavoriteRestaurant(restaurant.id) }
+                                    onFavoriteToggle = {
+                                        viewModel.toggleFavoriteRestaurant(
+                                            restaurant.id
+                                        )
+                                    }
                                 )
                             }
                         }
@@ -188,7 +235,8 @@ fun SearchScreen(
                             Spacer(Modifier.height(10.dp))
                         }
                         items(matchedFoods) { food ->
-                            val restaurant = viewModel.restaurants.find { it.menu.any { m -> m.id == food.id } }
+                            val restaurant =
+                                viewModel.restaurants.find { it.menu.any { m -> m.id == food.id } }
                             Row(
                                 Modifier
                                     .fillMaxWidth()
@@ -202,12 +250,26 @@ fun SearchScreen(
                                     .padding(10.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                NetworkImage(food.imageUrl, modifier = Modifier.size(64.dp).clip(RoundedCornerShape(10.dp)))
+                                NetworkImage(
+                                    food.imageUrl,
+                                    modifier = Modifier
+                                        .size(64.dp)
+                                        .clip(RoundedCornerShape(10.dp))
+                                )
                                 Spacer(Modifier.width(12.dp))
                                 Column(Modifier.weight(1f)) {
                                     Text(food.name, style = MaterialTheme.typography.titleSmall)
-                                    Text(restaurant?.name ?: "", style = MaterialTheme.typography.bodySmall, color = SubtleGray)
-                                    Text("\u20B9${food.price}", style = MaterialTheme.typography.labelLarge, color = BrandOrange, fontWeight = FontWeight.Bold)
+                                    Text(
+                                        restaurant?.name ?: "",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = SubtleGray
+                                    )
+                                    Text(
+                                        "\u20B9${food.price}",
+                                        style = MaterialTheme.typography.labelLarge,
+                                        color = BrandOrange,
+                                        fontWeight = FontWeight.Bold
+                                    )
                                 }
                             }
                         }

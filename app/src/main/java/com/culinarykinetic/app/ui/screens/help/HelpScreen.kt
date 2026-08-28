@@ -109,7 +109,7 @@ fun HelpIssueScreen(topic: String, onBack: () -> Unit, onSubmit: () -> Unit) {
             )
         }
         Surface(shadowElevation = 12.dp) {
-            Column(Modifier.padding(Dimens.ScreenPadding)) {
+            Column(Modifier.padding(Dimens.ScreenPadding).navigationBarsPadding()) {
                 PrimaryButton(text = "Submit Request", onClick = onSubmit)
             }
         }

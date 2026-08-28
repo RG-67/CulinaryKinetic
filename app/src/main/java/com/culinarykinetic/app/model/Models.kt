@@ -31,6 +31,12 @@ data class MenuItem(
     val addOns: List<AddOn> = emptyList()
 )
 
+data class PopularCuisine(
+    val id: String,
+    val name: String,
+    val imageUrl: String
+)
+
 data class SizeOption(val label: String, val extraPrice: Int, val note: String)
 data class AddOn(val id: String, val name: String, val price: Int)
 

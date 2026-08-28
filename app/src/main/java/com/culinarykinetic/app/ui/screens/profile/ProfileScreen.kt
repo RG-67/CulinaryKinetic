@@ -116,7 +116,7 @@ fun ProfileScreen(
                         )
                     }
                 }
-                Spacer(Modifier.height(14.dp))
+                Spacer(Modifier.height(20.dp))
                 LinearProgressIndicator(
                     progress = 0.82f,
                     modifier = Modifier
@@ -126,7 +126,7 @@ fun ProfileScreen(
                     color = Color.White,
                     trackColor = Color.White.copy(alpha = 0.3f)
                 )
-                Spacer(Modifier.height(6.dp))
+                Spacer(Modifier.height(10.dp))
                 Text(
                     "${user.pointsToNextTier} pts to Platinum",
                     color = Color.White.copy(alpha = 0.9f),

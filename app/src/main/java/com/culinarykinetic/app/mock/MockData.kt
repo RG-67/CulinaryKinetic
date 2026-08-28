@@ -16,30 +16,78 @@ object MockData {
     )
 
     val categories = listOf(
-        Category("c1", "Pizza", "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=300&q=80"),
-        Category("c2", "Burgers", "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&q=80"),
-        Category("c3", "Biryani", "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=300&q=80"),
-        Category("c4", "Chinese", "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300&q=80"),
-        Category("c5", "Desserts", "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&q=80"),
-        Category("c6", "South Indian", "https://images.unsplash.com/photo-1630383249896-483b1cb1f1e4?w=300&q=80")
+        Category(
+            "c1",
+            "Pizza",
+            "https://images.unsplash.com/photo-1594007654729-407eedc4be65?w=300&q=80"
+        ),
+        Category(
+            "c2",
+            "Burgers",
+            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=300&q=80"
+        ),
+        Category(
+            "c3",
+            "Biryani",
+            "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=300&q=80"
+        ),
+        Category(
+            "c4",
+            "Chinese",
+            "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=300&q=80"
+        ),
+        Category(
+            "c5",
+            "Desserts",
+            "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=300&q=80"
+        ),
+        Category(
+            "c6",
+            "South Indian",
+            "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c291dGglMjBpbmRpYW4lMjBkaXNofGVufDB8fDB8fHww"
+        )
     )
 
     private val biryaniMenu = listOf(
         MenuItem(
-            id = "m1", name = "Chicken Dum Biryani",
+            id = "m1",
+            name = "Chicken Dum Biryani",
             description = "Authentic Hyderabadi biryani cooked with succulent chicken and aromatic basmati rice. Slow-cooked to perfection in a sealed handi.",
-            price = 320, imageUrl = "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&q=80",
-            category = "Recommended", isVeg = false, rating = 4.8, reviewCount = 124,
-            sizes = listOf(SizeOption("Regular", 0, "Serves 1"), SizeOption("Large", 150, "Serves 2")),
-            addOns = listOf(AddOn("a1", "Extra Chicken", 80), AddOn("a2", "Raita", 40), AddOn("a3", "Soft Drink", 60))
+            price = 320,
+            imageUrl = "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=600&q=80",
+            category = "Recommended",
+            isVeg = false,
+            rating = 4.8,
+            reviewCount = 124,
+            sizes = listOf(
+                SizeOption("Regular", 0, "Serves 1"),
+                SizeOption("Large", 150, "Serves 2")
+            ),
+            addOns = listOf(
+                AddOn("a1", "Extra Chicken", 80),
+                AddOn("a2", "Raita", 40),
+                AddOn("a3", "Soft Drink", 60)
+            )
         ),
         MenuItem(
-            id = "m2", name = "Mutton Special Biryani",
+            id = "m2",
+            name = "Mutton Special Biryani",
             description = "Succulent pieces of mutton cooked with whole spices and long-grain basmati rice.",
-            price = 450, imageUrl = "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80",
-            category = "Recommended", isVeg = false, rating = 4.7, reviewCount = 98,
-            sizes = listOf(SizeOption("Regular", 0, "Serves 1"), SizeOption("Large", 180, "Serves 2")),
-            addOns = listOf(AddOn("a1", "Extra Mutton", 120), AddOn("a2", "Raita", 40), AddOn("a3", "Soft Drink", 60))
+            price = 450,
+            imageUrl = "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=600&q=80",
+            category = "Recommended",
+            isVeg = false,
+            rating = 4.7,
+            reviewCount = 98,
+            sizes = listOf(
+                SizeOption("Regular", 0, "Serves 1"),
+                SizeOption("Large", 180, "Serves 2")
+            ),
+            addOns = listOf(
+                AddOn("a1", "Extra Mutton", 120),
+                AddOn("a2", "Raita", 40),
+                AddOn("a3", "Soft Drink", 60)
+            )
         ),
         MenuItem(
             id = "m3", name = "Paneer Tikka Biryani",
@@ -49,46 +97,83 @@ object MockData {
             addOns = listOf(AddOn("a2", "Raita", 40), AddOn("a3", "Soft Drink", 60))
         ),
         MenuItem(
-            id = "m4", name = "Chicken 65 Starter",
+            id = "m4",
+            name = "Chicken 65 Starter",
             description = "Spicy, deep-fried chicken bites tossed in curry leaves and red chillies.",
-            price = 220, imageUrl = "https://mykitchendiaries.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2026/01/Chicken-65-Feature-Image.jpg.webp",
-            category = "Starters", isVeg = false, rating = 4.5, reviewCount = 44
+            price = 220,
+            imageUrl = "https://mykitchendiaries.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2026/01/Chicken-65-Feature-Image.jpg.webp",
+            category = "Starters",
+            isVeg = false,
+            rating = 4.5,
+            reviewCount = 44
         ),
         MenuItem(
-            id = "m5", name = "Veg Seekh Kebab",
+            id = "m5",
+            name = "Veg Seekh Kebab",
             description = "Char-grilled skewers of mixed vegetables and paneer with mint chutney.",
-            price = 190, imageUrl = "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
-            category = "Starters", isVeg = true, rating = 4.2, reviewCount = 28
+            price = 190,
+            imageUrl = "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&q=80",
+            category = "Starters",
+            isVeg = true,
+            rating = 4.2,
+            reviewCount = 28
         ),
         MenuItem(
-            id = "m6", name = "Butter Chicken",
+            id = "m6",
+            name = "Butter Chicken",
             description = "Creamy tomato-based curry with tender chicken, a North Indian classic.",
-            price = 340, imageUrl = "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80",
-            category = "Main Course", isVeg = false, rating = 4.6, reviewCount = 152
+            price = 340,
+            imageUrl = "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=600&q=80",
+            category = "Main Course",
+            isVeg = false,
+            rating = 4.6,
+            reviewCount = 152
         )
     )
 
     private val burgerMenu = listOf(
         MenuItem(
-            id = "b1", name = "Classic Cheese Burger",
+            id = "b1",
+            name = "Classic Cheese Burger",
             description = "Juicy beef patty, melted cheddar, lettuce, tomato and house sauce.",
-            price = 220, imageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
-            category = "Recommended", isVeg = false, rating = 4.3, reviewCount = 88,
-            sizes = listOf(SizeOption("Regular", 0, "Single"), SizeOption("Large", 90, "Double patty")),
-            addOns = listOf(AddOn("a4", "Extra Cheese", 40), AddOn("a5", "Bacon", 70), AddOn("a6", "Fries", 90))
+            price = 220,
+            imageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80",
+            category = "Recommended",
+            isVeg = false,
+            rating = 4.3,
+            reviewCount = 88,
+            sizes = listOf(
+                SizeOption("Regular", 0, "Single"),
+                SizeOption("Large", 90, "Double patty")
+            ),
+            addOns = listOf(
+                AddOn("a4", "Extra Cheese", 40),
+                AddOn("a5", "Bacon", 70),
+                AddOn("a6", "Fries", 90)
+            )
         ),
         MenuItem(
-            id = "b2", name = "Smoky BBQ Burger",
+            id = "b2",
+            name = "Smoky BBQ Burger",
             description = "Grilled chicken patty glazed in smoky BBQ sauce with crispy onions.",
-            price = 260, imageUrl = "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80",
-            category = "Recommended", isVeg = false, rating = 4.5, reviewCount = 73,
+            price = 260,
+            imageUrl = "https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80",
+            category = "Recommended",
+            isVeg = false,
+            rating = 4.5,
+            reviewCount = 73,
             addOns = listOf(AddOn("a4", "Extra Cheese", 40), AddOn("a6", "Fries", 90))
         ),
         MenuItem(
-            id = "b3", name = "Veggie Delight Burger",
+            id = "b3",
+            name = "Veggie Delight Burger",
             description = "Crispy potato & corn patty with fresh veggies and mayo.",
-            price = 180, imageUrl = "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&q=80",
-            category = "Recommended", isVeg = true, rating = 4.1, reviewCount = 40
+            price = 180,
+            imageUrl = "https://images.unsplash.com/photo-1520072959219-c595dc870360?w=600&q=80",
+            category = "Recommended",
+            isVeg = true,
+            rating = 4.1,
+            reviewCount = 40
         )
     )
 
@@ -157,8 +242,20 @@ object MockData {
 
     val coupons = listOf(
         Coupon("SAVE100", "Flat \u20B9100 OFF", "Get \u20B9100 off on your order", 100, 499),
-        Coupon("WELCOME50", "\u20B950 OFF for new users", "Applicable on your first order", 50, 199),
-        Coupon("BIRYANI125", "\u20B9125 OFF on Biryani orders", "Valid on The Biryani House & partners", 125, 499),
+        Coupon(
+            "WELCOME50",
+            "\u20B950 OFF for new users",
+            "Applicable on your first order",
+            50,
+            199
+        ),
+        Coupon(
+            "BIRYANI125",
+            "\u20B9125 OFF on Biryani orders",
+            "Valid on The Biryani House & partners",
+            125,
+            499
+        ),
         Coupon("FREESHIP", "Free Delivery", "No delivery fee on this order", 40, 0)
     )
 
@@ -171,11 +268,46 @@ object MockData {
     )
 
     val initialNotifications = mutableListOf(
-        AppNotification("n1", "Order Delivered", "Your order from The Biryani House has been delivered. Enjoy!", "2h ago", NotificationType.ORDER, true),
-        AppNotification("n2", "Payment Successful", "\u20B9360 was paid via UPI for order #CK1042.", "2h ago", NotificationType.PAYMENT, true),
-        AppNotification("n3", "50% OFF this weekend!", "Use code SAVE100 on orders above \u20B9499.", "1d ago", NotificationType.OFFER, false),
-        AppNotification("n4", "Your rider is on the way", "Rahul is 15 minutes away from your location.", "3d ago", NotificationType.DELIVERY, true),
-        AppNotification("n5", "New restaurants near you", "Check out 5 new restaurants added in HSR Layout.", "5d ago", NotificationType.PROMO, true)
+        AppNotification(
+            "n1",
+            "Order Delivered",
+            "Your order from The Biryani House has been delivered. Enjoy!",
+            "2h ago",
+            NotificationType.ORDER,
+            true
+        ),
+        AppNotification(
+            "n2",
+            "Payment Successful",
+            "\u20B9360 was paid via UPI for order #CK1042.",
+            "2h ago",
+            NotificationType.PAYMENT,
+            true
+        ),
+        AppNotification(
+            "n3",
+            "50% OFF this weekend!",
+            "Use code SAVE100 on orders above \u20B9499.",
+            "1d ago",
+            NotificationType.OFFER,
+            false
+        ),
+        AppNotification(
+            "n4",
+            "Your rider is on the way",
+            "Rahul is 15 minutes away from your location.",
+            "3d ago",
+            NotificationType.DELIVERY,
+            true
+        ),
+        AppNotification(
+            "n5",
+            "New restaurants near you",
+            "Check out 5 new restaurants added in HSR Layout.",
+            "5d ago",
+            NotificationType.PROMO,
+            true
+        )
     )
 
     fun searchAll(query: String): Pair<List<Restaurant>, List<MenuItem>> {
@@ -190,5 +322,28 @@ object MockData {
     }
 
     val recentSearches = mutableListOf("Chicken Biryani", "Pizza", "Sushi")
-    val popularCuisines = listOf("South Indian", "Chinese", "Italian", "Mexican")
+
+    val popularCuisines = listOf(
+        PopularCuisine(
+            "p1",
+            "South Indian",
+            "https://images.unsplash.com/photo-1742281258189-3b933879867a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c291dGglMjBpbmRpYW4lMjBkaXNofGVufDB8fDB8fHww"
+        ),
+        PopularCuisine(
+            "p2",
+            "Chinese",
+            "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2hpbmVzZSUyMGRpc2h8ZW58MHx8MHx8fDA%3D"
+        ),
+        PopularCuisine(
+            "p3",
+            "Italian",
+            "https://media.istockphoto.com/id/1198079266/photo/deluxe-pizza-with-pepperoni-sausage-mushrooms-and-peppers.webp?a=1&b=1&s=612x612&w=0&k=20&c=iIn_o7pSEgDcchNgU6axDJvHkZessshM9vB_IVECx1k="
+        ),
+        PopularCuisine(
+            "p4",
+            "Mexican",
+            "https://plus.unsplash.com/premium_photo-1661730329741-b3bf77019b39?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWV4aWNhbiUyMGRpc2h8ZW58MHx8MHx8fDA%3D"
+        )
+    )
+
 }

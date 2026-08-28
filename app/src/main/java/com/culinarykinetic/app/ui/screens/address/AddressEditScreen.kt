@@ -83,7 +83,7 @@ fun AddressEditScreen(
             Spacer(Modifier.height(80.dp))
         }
         Surface(shadowElevation = 12.dp) {
-            Column(Modifier.padding(Dimens.ScreenPadding)) {
+            Column(Modifier.padding(Dimens.ScreenPadding).navigationBarsPadding()) {
                 PrimaryButton(
                     text = "Save Address",
                     enabled = label.isNotBlank() && line1.isNotBlank(),
