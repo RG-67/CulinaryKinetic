@@ -1,5 +1,7 @@
 package com.culinarykinetic.app.ui.screens.splash
 
+import android.app.Activity
+import android.view.WindowInsetsController
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -17,13 +19,43 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import kotlinx.coroutines.delay
 import com.culinarykinetic.app.ui.theme.*
 
 @Composable
 fun SplashScreen(onFinished: () -> Unit) {
+    /*val context = LocalContext.current
+    val activity = context as? Activity
+
+    DisposableEffect(activity) {
+        if (activity != null) {
+            val window = activity.window
+            WindowInsetsControllerCompat(window, window.decorView).apply {
+                hide(
+                    WindowInsetsCompat.Type.statusBars() or
+                            WindowInsetsCompat.Type.navigationBars()
+                )
+                systemBarsBehavior =
+                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+        }
+        onDispose {
+            if (activity != null) {
+                val window = activity.window
+                WindowInsetsControllerCompat(window, window.decorView).show(
+                    WindowInsetsCompat.Type.statusBars() or
+                            WindowInsetsCompat.Type.navigationBars()
+                )
+            }
+        }
+    }*/
+
     val alpha = remember { Animatable(0f) }
     LaunchedEffect(Unit) {
         alpha.animateTo(1f, animationSpec = tween(700))
