@@ -30,32 +30,6 @@ import com.culinarykinetic.app.ui.theme.*
 
 @Composable
 fun SplashScreen(onFinished: () -> Unit) {
-    /*val context = LocalContext.current
-    val activity = context as? Activity
-
-    DisposableEffect(activity) {
-        if (activity != null) {
-            val window = activity.window
-            WindowInsetsControllerCompat(window, window.decorView).apply {
-                hide(
-                    WindowInsetsCompat.Type.statusBars() or
-                            WindowInsetsCompat.Type.navigationBars()
-                )
-                systemBarsBehavior =
-                    WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            }
-        }
-        onDispose {
-            if (activity != null) {
-                val window = activity.window
-                WindowInsetsControllerCompat(window, window.decorView).show(
-                    WindowInsetsCompat.Type.statusBars() or
-                            WindowInsetsCompat.Type.navigationBars()
-                )
-            }
-        }
-    }*/
-
     val alpha = remember { Animatable(0f) }
     LaunchedEffect(Unit) {
         alpha.animateTo(1f, animationSpec = tween(700))

@@ -78,7 +78,7 @@ fun OnboardingScreen(onFinished: () -> Unit) {
                             style = MaterialTheme.typography.labelLarge,
                             modifier = Modifier
                                 .align(Alignment.TopEnd)
-                                .padding(20.dp)
+                                .padding(start = 20.dp, end = 20.dp, bottom = 20.dp, top = 50.dp)
                                 .clip(RoundedCornerShape(100.dp))
                                 .background(InkBlack.copy(alpha = 0.35f))
                                 .padding(horizontal = 14.dp, vertical = 8.dp)

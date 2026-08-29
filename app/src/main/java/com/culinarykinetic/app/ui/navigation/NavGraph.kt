@@ -51,6 +51,7 @@ import com.culinarykinetic.app.ui.screens.search.SearchScreen
 import com.culinarykinetic.app.ui.screens.settings.AboutScreen
 import com.culinarykinetic.app.ui.screens.settings.SettingsScreen
 import com.culinarykinetic.app.ui.screens.splash.SplashScreen
+import okhttp3.Route
 
 private val screensWithBottomBar = setOf(
     Routes.HOME, Routes.SEARCH, Routes.ORDERS, Routes.FAVORITES, Routes.PROFILE
@@ -63,7 +64,21 @@ fun CulinaryKineticNavHost() {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
 
-    Column(Modifier.fillMaxSize().statusBarsPadding()) {
+    val isFullScreen =
+        currentRoute == Routes.SPLASH ||
+                currentRoute == Routes.ONBOARDING
+
+    Column(
+        Modifier
+            .fillMaxSize()
+            .then(
+                if (!isFullScreen) {
+                    Modifier.statusBarsPadding()
+                } else {
+                    Modifier
+                }
+            )
+    ) {
         Box(Modifier.weight(1f)) {
             NavHost(
                 navController = navController,
@@ -71,12 +86,20 @@ fun CulinaryKineticNavHost() {
             ) {
                 composable(Routes.SPLASH) {
                     SplashScreen(onFinished = {
-                        navController.navigate(Routes.ONBOARDING) { popUpTo(Routes.SPLASH) { inclusive = true } }
+                        navController.navigate(Routes.ONBOARDING) {
+                            popUpTo(Routes.SPLASH) {
+                                inclusive = true
+                            }
+                        }
                     })
                 }
                 composable(Routes.ONBOARDING) {
                     OnboardingScreen(onFinished = {
-                        navController.navigate(Routes.AUTH_PHONE) { popUpTo(Routes.ONBOARDING) { inclusive = true } }
+                        navController.navigate(Routes.AUTH_PHONE) {
+                            popUpTo(Routes.ONBOARDING) {
+                                inclusive = true
+                            }
+                        }
                     })
                 }
                 composable(Routes.AUTH_PHONE) {
@@ -88,7 +111,11 @@ fun CulinaryKineticNavHost() {
                         },
                         onSkipDemo = {
                             viewModel.completeAuth()
-                            navController.navigate(Routes.HOME) { popUpTo(Routes.SPLASH) { inclusive = true } }
+                            navController.navigate(Routes.HOME) {
+                                popUpTo(Routes.SPLASH) {
+                                    inclusive = true
+                                }
+                            }
                         }
                     )
                 }
@@ -98,7 +125,11 @@ fun CulinaryKineticNavHost() {
                         onBack = { navController.popBackStack() },
                         onVerified = {
                             viewModel.completeAuth()
-                            navController.navigate(Routes.HOME) { popUpTo(Routes.SPLASH) { inclusive = true } }
+                            navController.navigate(Routes.HOME) {
+                                popUpTo(Routes.SPLASH) {
+                                    inclusive = true
+                                }
+                            }
                         }
                     )
                 }
@@ -107,16 +138,41 @@ fun CulinaryKineticNavHost() {
                         viewModel = viewModel,
                         onSearchClick = { navController.navigate(Routes.SEARCH) },
                         onNotificationsClick = { navController.navigate(Routes.NOTIFICATIONS) },
-                        onCategoryClick = { category -> navController.navigate(Routes.restaurantListing(category)) },
-                        onRestaurantClick = { id -> navController.navigate(Routes.restaurantDetails(id)) }
+                        onCategoryClick = { category ->
+                            navController.navigate(
+                                Routes.restaurantListing(
+                                    category
+                                )
+                            )
+                        },
+                        onRestaurantClick = { id ->
+                            navController.navigate(
+                                Routes.restaurantDetails(
+                                    id
+                                )
+                            )
+                        }
                     )
                 }
                 composable(Routes.SEARCH) {
                     SearchScreen(
                         viewModel = viewModel,
                         onBack = null,
-                        onRestaurantClick = { id -> navController.navigate(Routes.restaurantDetails(id)) },
-                        onFoodClick = { restaurantId, foodId -> navController.navigate(Routes.foodDetails(restaurantId, foodId)) }
+                        onRestaurantClick = { id ->
+                            navController.navigate(
+                                Routes.restaurantDetails(
+                                    id
+                                )
+                            )
+                        },
+                        onFoodClick = { restaurantId, foodId ->
+                            navController.navigate(
+                                Routes.foodDetails(
+                                    restaurantId,
+                                    foodId
+                                )
+                            )
+                        }
                     )
                 }
                 composable(
@@ -128,7 +184,13 @@ fun CulinaryKineticNavHost() {
                         categoryName = category,
                         viewModel = viewModel,
                         onBack = { navController.popBackStack() },
-                        onRestaurantClick = { id -> navController.navigate(Routes.restaurantDetails(id)) }
+                        onRestaurantClick = { id ->
+                            navController.navigate(
+                                Routes.restaurantDetails(
+                                    id
+                                )
+                            )
+                        }
                     )
                 }
                 composable(
@@ -140,7 +202,14 @@ fun CulinaryKineticNavHost() {
                         restaurantId = id,
                         viewModel = viewModel,
                         onBack = { navController.popBackStack() },
-                        onFoodClick = { foodId -> navController.navigate(Routes.foodDetails(id, foodId)) },
+                        onFoodClick = { foodId ->
+                            navController.navigate(
+                                Routes.foodDetails(
+                                    id,
+                                    foodId
+                                )
+                            )
+                        },
                         onCartClick = { navController.navigate(Routes.CART) }
                     )
                 }
@@ -167,7 +236,9 @@ fun CulinaryKineticNavHost() {
                         onBack = { navController.popBackStack() },
                         onAddMoreItems = {
                             val rid = viewModel.cartRestaurant?.id
-                            if (rid != null) navController.navigate(Routes.restaurantDetails(rid)) else navController.navigate(Routes.HOME)
+                            if (rid != null) navController.navigate(Routes.restaurantDetails(rid)) else navController.navigate(
+                                Routes.HOME
+                            )
                         },
                         onApplyCouponClick = { navController.navigate(Routes.COUPONS) },
                         onCheckout = { navController.navigate(Routes.ADDRESS_SELECT) }
@@ -187,7 +258,9 @@ fun CulinaryKineticNavHost() {
                 }
                 composable(
                     Routes.ADDRESS_EDIT,
-                    arguments = listOf(navArgument("addressId") { type = NavType.StringType; nullable = true; defaultValue = null })
+                    arguments = listOf(navArgument("addressId") {
+                        type = NavType.StringType; nullable = true; defaultValue = null
+                    })
                 ) { entry ->
                     AddressEditScreen(
                         viewModel = viewModel,
@@ -243,7 +316,13 @@ fun CulinaryKineticNavHost() {
                             val id = viewModel.currentOrder?.id ?: return@OrderSuccessScreen
                             navController.navigate(Routes.orderTracking(id)) { popUpTo(Routes.HOME) }
                         },
-                        onBackToHome = { navController.navigate(Routes.HOME) { popUpTo(Routes.HOME) { inclusive = true } } },
+                        onBackToHome = {
+                            navController.navigate(Routes.HOME) {
+                                popUpTo(Routes.HOME) {
+                                    inclusive = true
+                                }
+                            }
+                        },
                         onViewOrder = {
                             val id = viewModel.currentOrder?.id ?: return@OrderSuccessScreen
                             navController.navigate(Routes.orderDetails(id))
@@ -297,8 +376,21 @@ fun CulinaryKineticNavHost() {
                     FavoritesScreen(
                         viewModel = viewModel,
                         onBack = null,
-                        onRestaurantClick = { id -> navController.navigate(Routes.restaurantDetails(id)) },
-                        onFoodClick = { restaurantId, foodId -> navController.navigate(Routes.foodDetails(restaurantId, foodId)) },
+                        onRestaurantClick = { id ->
+                            navController.navigate(
+                                Routes.restaurantDetails(
+                                    id
+                                )
+                            )
+                        },
+                        onFoodClick = { restaurantId, foodId ->
+                            navController.navigate(
+                                Routes.foodDetails(
+                                    restaurantId,
+                                    foodId
+                                )
+                            )
+                        },
                         onBrowse = { navController.navigate(Routes.HOME) { popUpTo(Routes.HOME) } }
                     )
                 }
@@ -306,7 +398,9 @@ fun CulinaryKineticNavHost() {
                     OffersScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
                 }
                 composable(Routes.NOTIFICATIONS) {
-                    NotificationsScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
+                    NotificationsScreen(
+                        viewModel = viewModel,
+                        onBack = { navController.popBackStack() })
                 }
                 composable(Routes.PROFILE) {
                     ProfileScreen(
@@ -322,18 +416,30 @@ fun CulinaryKineticNavHost() {
                         onSettings = { navController.navigate(Routes.SETTINGS) },
                         onLogOut = {
                             viewModel.logOut()
-                            navController.navigate(Routes.AUTH_PHONE) { popUpTo(0) { inclusive = true } }
+                            navController.navigate(Routes.AUTH_PHONE) {
+                                popUpTo(0) {
+                                    inclusive = true
+                                }
+                            }
                         }
                     )
                 }
                 composable(Routes.EDIT_PROFILE) {
-                    EditProfileScreen(viewModel = viewModel, onBack = { navController.popBackStack() }, onSaved = { navController.popBackStack() })
+                    EditProfileScreen(
+                        viewModel = viewModel,
+                        onBack = { navController.popBackStack() },
+                        onSaved = { navController.popBackStack() })
                 }
                 composable(Routes.PAYMENT_METHODS) {
-                    PaymentMethodsScreen(viewModel = viewModel, onBack = { navController.popBackStack() })
+                    PaymentMethodsScreen(
+                        viewModel = viewModel,
+                        onBack = { navController.popBackStack() })
                 }
                 composable(Routes.SETTINGS) {
-                    SettingsScreen(viewModel = viewModel, onBack = { navController.popBackStack() }, onAbout = { navController.navigate(Routes.ABOUT) })
+                    SettingsScreen(
+                        viewModel = viewModel,
+                        onBack = { navController.popBackStack() },
+                        onAbout = { navController.navigate(Routes.ABOUT) })
                 }
                 composable(Routes.ABOUT) {
                     AboutScreen(onBack = { navController.popBackStack() })
@@ -350,7 +456,10 @@ fun CulinaryKineticNavHost() {
                     arguments = listOf(navArgument("topic") { type = NavType.StringType })
                 ) { entry ->
                     val topic = entry.arguments?.getString("topic") ?: "Help"
-                    HelpIssueScreen(topic = topic, onBack = { navController.popBackStack() }, onSubmit = { navController.popBackStack() })
+                    HelpIssueScreen(
+                        topic = topic,
+                        onBack = { navController.popBackStack() },
+                        onSubmit = { navController.popBackStack() })
                 }
                 composable(
                     Routes.REVIEW,
