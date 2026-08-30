@@ -6,9 +6,9 @@ object MockData {
 
     val demoUser = User(
         id = "u1",
-        name = "Alex Johnson",
-        email = "alex.johnson@example.com",
-        phone = "+1 (555) 123-4567",
+        name = "Alex Ghosh",
+        email = "alex.ghosh@example.com",
+        phone = "+91 9874563210",
         avatarUrl = "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=300&q=80",
         loyaltyPoints = 2450,
         tier = "Gold Tier Member",
@@ -183,7 +183,7 @@ object MockData {
             coverImageUrl = "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?w=900&q=80",
             cuisines = listOf("Biryani", "North Indian", "Mughlai"),
             rating = 4.6, reviewCount = 512, deliveryTimeMinutes = "25-30 min",
-            distanceKm = 2.1, priceForTwo = 400, priceLevel = "$$",
+            distanceKm = 2.1, priceForTwo = 400, priceLevel = "₹₹",
             isPromoted = true, offerText = "\u20B9125 OFF above \u20B9499", freeDelivery = true,
             menu = biryaniMenu, menuCategories = listOf("Recommended", "Main Course", "Starters")
         ),
@@ -192,7 +192,7 @@ object MockData {
             coverImageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80",
             cuisines = listOf("American", "Fast Food", "Beverages"),
             rating = 4.2, reviewCount = 340, deliveryTimeMinutes = "20 min",
-            distanceKm = 1.4, priceForTwo = 350, priceLevel = "$$",
+            distanceKm = 1.4, priceForTwo = 350, priceLevel = "₹₹",
             offerText = "Free Delivery on orders above \u20B9299", freeDelivery = true,
             menu = burgerMenu, menuCategories = listOf("Recommended")
         ),
@@ -201,7 +201,7 @@ object MockData {
             coverImageUrl = "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=900&q=80",
             cuisines = listOf("Hyderabadi", "Indian", "Mughlai"),
             rating = 4.8, reviewCount = 900, deliveryTimeMinutes = "25-35 min",
-            distanceKm = 2.5, priceForTwo = 500, priceLevel = "$$",
+            distanceKm = 2.5, priceForTwo = 500, priceLevel = "₹₹",
             offerText = "50% OFF up to \u20B9100", menu = biryaniMenu,
             menuCategories = listOf("Recommended", "Main Course", "Starters")
         ),
@@ -210,7 +210,7 @@ object MockData {
             coverImageUrl = "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?w=900&q=80",
             cuisines = listOf("Lucknowi", "North Indian", "Kebab"),
             rating = 4.5, reviewCount = 410, deliveryTimeMinutes = "30-45 min",
-            distanceKm = 4.1, priceForTwo = 700, priceLevel = "$$$",
+            distanceKm = 4.1, priceForTwo = 700, priceLevel = "₹₹₹",
             freeDelivery = true, menu = biryaniMenu,
             menuCategories = listOf("Recommended", "Main Course", "Starters")
         ),
@@ -219,7 +219,7 @@ object MockData {
             coverImageUrl = "https://images.unsplash.com/photo-1588644525273-f37b60d78512?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             cuisines = listOf("Bengali", "Mughlai", "Rolls"),
             rating = 4.2, reviewCount = 210, deliveryTimeMinutes = "15-25 min",
-            distanceKm = 1.2, priceForTwo = 300, priceLevel = "$$",
+            distanceKm = 1.2, priceForTwo = 300, priceLevel = "₹₹",
             menu = biryaniMenu, menuCategories = listOf("Recommended", "Main Course", "Starters")
         )
     )

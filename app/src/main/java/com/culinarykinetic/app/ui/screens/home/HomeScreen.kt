@@ -97,6 +97,7 @@ fun HomeScreen(
                                 color = SubtleGray
                             )
                         }
+                        Spacer(Modifier.height(5.dp))
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Text(
                                 viewModel.currentLocationLabel,
