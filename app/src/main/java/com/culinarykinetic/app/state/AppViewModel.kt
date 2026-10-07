@@ -43,7 +43,7 @@ class AppViewModel : ViewModel() {
     }
 
     // ----- Location -----
-    var currentLocationLabel by mutableStateOf("Gopinathpur, West Bengal")
+    var currentLocationLabel by mutableStateOf("Pune, Maharashtra")
 
     // ----- Data -----
     val restaurants = MockData.restaurants

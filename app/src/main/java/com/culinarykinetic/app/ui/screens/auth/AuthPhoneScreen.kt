@@ -68,9 +68,9 @@ fun AuthPhoneScreen(
                 value = phone,
                 onValueChange = { if (it.length <= 10) phone = it.filter { c -> c.isDigit() } },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("(555) 000-0000") },
+                placeholder = { Text("00000-00000") },
                 leadingIcon = {
-                    Text("  US +1", color = SubtleGray, style = MaterialTheme.typography.bodyMedium)
+                    Text("  IND +91", color = SubtleGray, style = MaterialTheme.typography.bodyMedium)
                 },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
@@ -83,7 +83,7 @@ fun AuthPhoneScreen(
             Spacer(Modifier.height(20.dp))
             PrimaryButton(
                 text = "Continue",
-                onClick = { onContinue(if (phone.isBlank()) "5551234567" else phone) }
+                onClick = { onContinue(phone.ifBlank { "0000000000" }) }
             )
             Spacer(Modifier.height(20.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -93,7 +93,7 @@ fun AuthPhoneScreen(
             }
             Spacer(Modifier.height(20.dp))
             OutlinedButton(
-                onClick = { onContinue(if (phone.isBlank()) "5551234567" else phone) },
+                onClick = { onContinue(phone.ifBlank { "0000000000" }) },
                 modifier = Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(100.dp),
                 colors = ButtonDefaults.outlinedButtonColors(containerColor = ChipGray, contentColor = CharcoalText)
@@ -104,7 +104,7 @@ fun AuthPhoneScreen(
             }
             Spacer(Modifier.height(12.dp))
             OutlinedButton(
-                onClick = { onContinue(if (phone.isBlank()) "5551234567" else phone) },
+                onClick = { onContinue(phone.ifBlank { "0000000000" }) },
                 modifier = Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(100.dp),
                 colors = ButtonDefaults.outlinedButtonColors(containerColor = ChipGray, contentColor = CharcoalText)

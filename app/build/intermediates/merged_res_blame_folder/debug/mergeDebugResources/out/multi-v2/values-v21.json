@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.culinarykinetic.app-mergeDebugResources-50:/values-v21/values-v21.xml",
+            "outputFile": "com.culinarykinetic.app-mergeDebugResources-49:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/home/rittik/.gradle/caches/transforms-4/8e0a0bff2d388b6446750efdf4a5758f/transformed/core-1.13.1/res/values-v21/values-v21.xml",
+                    "source": "/home/rittik/.gradle/caches/9.4.1/transforms/2ac4ccad2cc3d5915f1aeb1b025d7a9c/transformed/core-1.13.1/res/values-v21/values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

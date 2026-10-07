@@ -70,7 +70,7 @@ fun OtpScreen(
             color = CharcoalText
         )
         Text(
-            "+1 ($phoneNumber)  Change number",
+            "+91 ($phoneNumber)  Change number",
             style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.fillMaxWidth(),
